@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -21,9 +22,10 @@ namespace JMT.HttpHelper.Core
         private HttpType? httpType { get; set; } = null;
         public string CustomAuthName { get; set; }
         public string CustomAuthValue { get; set; }
-        public List<(string name, string value)> Headers { get; set; }
-        public IHttpClientFactory Factory { get; set; } = null;
-        public string Token { get; set; } = string.Empty;
+        private List<(string name, string value)> Headers { get; set; }
+        private IHttpClientFactory Factory { get; set; } = null;
+        private string Token { get; set; } = string.Empty;
+        private MultipartFormDataContent MultiPartDataContent { get; set; }
 
         #endregion
 
@@ -32,10 +34,31 @@ namespace JMT.HttpHelper.Core
         {
             // initialize the list
             Headers = new List<(string name, string value)>();
+
+            // initialize multiformdata content
+            MultiPartDataContent = new MultipartFormDataContent();
         }
         public HttpHelper SetCustomHeader(string name, string value)
         {
             this.Headers.Add((name, value));
+            return this;
+        }
+
+        public HttpHelper SetMultipartContent(string value, string key, string path = null)
+        {
+            if (!string.IsNullOrWhiteSpace(path))
+            {
+                // if not exists we will not return this file
+                if (!File.Exists(path))
+                    return this;
+
+                FileStream fs = File.OpenRead(path);
+                MultiPartDataContent.Add(new StreamContent(fs), key, value);
+            }
+            else
+                // meaning the content was string
+                MultiPartDataContent.Add(new StringContent(value), key);
+
             return this;
         }
 
@@ -111,7 +134,7 @@ namespace JMT.HttpHelper.Core
                 .GetInstance<IHttpClientFactory>()
                 .CreateClient() : this.Factory.CreateClient();
 
-            if (!string.IsNullOrWhiteSpace(this.BaseUrl))
+            if (!string.IsNullOrWhiteSpace(this.BaseUrl)) 
                 client.BaseAddress = new Uri(this.BaseUrl);
 
             client.DefaultRequestHeaders.Accept.Clear();
@@ -135,11 +158,18 @@ namespace JMT.HttpHelper.Core
                         }
                     case HttpType.POST:
                         {
-                            HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, this.Route)
+                            if (MultiPartDataContent.Headers.ContentLength > 0) 
                             {
-                                Content = new StringContent(this.Content, Encoding.UTF8, this.AppType)
-                            };
-                            response = await client.SendAsync(req);
+                                response = await client.PostAsync(this.Route, MultiPartDataContent);
+                            }
+                            else
+                            {
+                                HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, this.Route)
+                                {
+                                    Content = new StringContent(this.Content, Encoding.UTF8, this.AppType)
+                                };
+                                response = await client.SendAsync(req);
+                            }
                             break;
                         }
                     case HttpType.DELETE:

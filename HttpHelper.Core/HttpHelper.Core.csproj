@@ -9,11 +9,11 @@
     <Description>A simple dotnet core library wrapper for http request boilerplate</Description>
     <PackageProjectUrl>https://github.com/waput90/JMT.HttpHelper.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/waput90/JMT.HttpHelper.Core</RepositoryUrl>
-    <PackageReleaseNotes>namespace changes</PackageReleaseNotes>
+    <PackageReleaseNotes>multipart for passing files to API request</PackageReleaseNotes>
     <NeutralLanguage></NeutralLanguage>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
