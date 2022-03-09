@@ -55,6 +55,10 @@ var exchangeRate = await new HttpHelper()
     // mime type either JSON or FORM_URL but you can still pass string data here if mimetype are not listed
     .SetMediaTypeHeader(MimeType.JSON) 
     
+    // multiple custom header you can set more than one custom header if refer example below
+    .SetCustomHeader("HeaderKey1", "HeaderValue1")
+    .SetCustomHeader("HeaderKey2", "HeaderValue2")
+    
     // you can mapped directly the object that you want to pass on the request
     .RequestDeserialize<TAnyDTO>();
     
