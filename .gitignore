@@ -1,0 +1,9 @@
+
+.vs/*
+HttpHelper.Common/obj/*
+HttpHelper.Common/bin/*
+HttpHelper.Core/bin/*
+HttpHelper.Core/obj/*
+HttpHelper.Enums/bin/*
+HttpHelper.Enums/obj/*
+library key.txt
