@@ -1,4 +1,4 @@
-﻿namespace HttpHelper.Core
+﻿namespace JMT.HttpHelper.Core
 {
     public enum HttpType
     {

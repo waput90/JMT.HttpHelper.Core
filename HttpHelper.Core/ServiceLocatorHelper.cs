@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace HttpHelper.Core
+namespace JMT.HttpHelper.Core
 {
     internal class ServiceLocatorHelper
     {

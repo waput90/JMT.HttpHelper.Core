@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace HttpHelper.Core
+namespace JMT.HttpHelper.Core
 {
     public static class ServiceRegistrationLayer
     {
