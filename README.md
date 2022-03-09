@@ -59,6 +59,11 @@ var exchangeRate = await new HttpHelper()
     .SetCustomHeader("HeaderKey1", "HeaderValue1")
     .SetCustomHeader("HeaderKey2", "HeaderValue2")
     
+    // setting multipart content will allow to pass data with parameter values on it
+    .SetMultipartContent(key: "file", value: "filename.txt",  path: "PATH TO YOUR FILE")
+    .SetMultipartContent(key: "key1", value: "key_value_1")
+    .SetMultipartContent(key: "key2", value: "key_value_2")
+    
     // you can mapped directly the object that you want to pass on the request
     .RequestDeserialize<TAnyDTO>();
     
