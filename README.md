@@ -33,6 +33,8 @@ public void ConfigureServices(IServiceCollection services)
 
 3. Sample request
 ```
+using JMT.HttpHelper.Core;
+
 // initialize request
 var exchangeRate = await new HttpHelper()
      // set your URL here
