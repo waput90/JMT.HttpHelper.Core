@@ -1,0 +1,11 @@
+﻿namespace HttpHelper.Core
+{
+    public enum HttpType
+    {
+        POST,
+        GET,
+        PATCH,
+        DELETE,
+        PUT
+    }
+}

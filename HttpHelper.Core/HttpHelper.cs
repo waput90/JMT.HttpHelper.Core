@@ -1,5 +1,4 @@
 ﻿using HttpHelper.Core;
-using HttpHelper.Enums;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace HttpHelper.Common
+namespace HttpHelper.Core
 {
     internal static class StringHelper
     {

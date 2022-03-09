@@ -7,6 +7,10 @@
     <Company>JMT</Company>
     <Product>JMT.HttpHelper.Core</Product>
     <Description>A simple dotnet core library wrapper for http request boilerplate</Description>
+    <PackageProjectUrl>https://github.com/waput90/JMT.HttpHelper.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/waput90/JMT.HttpHelper.Core</RepositoryUrl>
+    <PackageReleaseNotes>initial commit on the library</PackageReleaseNotes>
+    <NeutralLanguage></NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
