@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -158,10 +159,8 @@ namespace JMT.HttpHelper.Core
                         }
                     case HttpType.POST:
                         {
-                            if (MultiPartDataContent.Headers.ContentLength > 0) 
-                            {
+                            if (MultiPartDataContent.Count() > 0) 
                                 response = await client.PostAsync(this.Route, MultiPartDataContent);
-                            }
                             else
                             {
                                 HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, this.Route)
