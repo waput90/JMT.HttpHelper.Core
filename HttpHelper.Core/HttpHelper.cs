@@ -33,7 +33,7 @@ namespace JMT.HttpHelper.Core
         #region Methods
         public HttpHelper()
         {
-            // initialize the list
+            // initialize the list 1
             Headers = new List<(string name, string value)>();
 
             // initialize multiformdata content
